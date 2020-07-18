@@ -5,9 +5,10 @@
 ## Used stack
 
 - React.js
+- Jest
 - SCSS
-- webpack
-- ESlint
+- Webpack
+- ESLint
 
 ## Install
 ```
