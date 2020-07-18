@@ -12,13 +12,13 @@ const filename = (ext) => isDev ? `bundle.${ ext }` : `bundle.[hash].${ ext }`;
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: ['@babel/polyfill', './index.js'],
+  entry: ['@babel/polyfill', './index.tsx'],
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '@component': path.resolve(__dirname, 'src/components')
@@ -50,31 +50,48 @@ module.exports = {
     })
   ],
   module: {
-    rules: [{
-      test: /\.s[ac]ss$/i,
-      use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: isDev,
-            reloadAll: true
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+              reloadAll: true
+            }
+          },
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader'
           }
-        },
-        'css-loader',
-        'sass-loader'
-      ]
-    }, {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: [{
-        loader: 'eslint-loader'
-      }, {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-          plugins: ['@babel/plugin-proposal-class-properties']
-        }
-      }]
-    }]
+        ]
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader'
+      }
+      // {
+      //   test: /\.js$/,
+      //   exclude: /node_modules/,
+      //   use: [{
+      //     loader: 'eslint-loader'
+      //   }, {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: ['@babel/preset-env', '@babel/preset-react'],
+      //       plugins: ['@babel/plugin-proposal-class-properties']
+      //     }
+      //   }]
+      // }
+    ]
   }
 };
