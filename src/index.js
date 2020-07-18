@@ -3,4 +3,8 @@ import React from 'react';
 
 import App from './App';
 
-reactDOM.render(<App/>, document.getElementById('root'));
+reactDOM.render(
+    <React.StrictMode>
+      <App name={ 'Ilya' }/>
+    </React.StrictMode>,
+    document.getElementById('root'));

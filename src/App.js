@@ -2,15 +2,16 @@ import React from 'react';
 
 import './style.scss';
 
-function App() {
+const App = ({ name }) => {
   return (
       <div className='container'>
-      <h1>Pure react application</h1>
-       <img className='logo'
-            src='/public/logo.svg'
-            alt='React.js'/>
+        <h1>Pure react application</h1>
+        <h2>Hello { name }</h2>
+        <img className='logo'
+             src='/public/logo.svg'
+             alt='React.js'/>
       </div>
   );
-}
+};
 
 export default App;

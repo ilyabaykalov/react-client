@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    h1 {
+    h1, h2 {
       text-align: center;
     }
 
@@ -16,6 +16,7 @@ body {
       width: 300px;
       margin: auto;
     }
+
     @media (prefers-reduced-motion: no-preference) {
       .logo {
         animation: logo-spin infinite 5s linear;
