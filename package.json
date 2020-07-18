@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"main": "webpack.config.js",
 	"scripts": {
-		"start": "cross-env NODE_ENV=development webpack-dev-server --open --useLocalIp",
+		"start": "cross-env NODE_ENV=development webpack-dev-server",
 		"build": "cross-env NODE_ENV=production webpack --mode production",
 		"test": "jest"
 	},
