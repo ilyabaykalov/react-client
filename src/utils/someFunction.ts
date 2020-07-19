@@ -1,3 +1,3 @@
-module.exports = (a: number, b: string) => {
+module.exports.sum = (a: number, b: string) => {
     return a + b;
 };
