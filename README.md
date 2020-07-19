@@ -5,6 +5,7 @@
 ## Used stack
 
 - React.js
+- TypeScript
 - Jest
 - SCSS
 - Webpack
