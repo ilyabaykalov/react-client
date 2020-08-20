@@ -66,19 +66,18 @@ module.exports = {
               reloadAll: true
             }
           },
-          'css-loader',
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: {
+                localIdentName: '[local]__[hash:base64:5]'
+              }
+            }
+          },
           'sass-loader'
         ]
       },
-      // {
-      //   test: /\.ts(x?)$/,
-      //   exclude: /node_modules/,
-      //   use: [
-      //     {
-      //       loader: 'ts-loader'
-      //     }
-      //   ]
-      // },
       {
         enforce: 'pre',
         test: /\.js$/,

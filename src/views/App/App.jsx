@@ -1,11 +1,13 @@
 import React from 'react';
 
-import '@stylesheets';
+import { Sample } from '@components/Sample';
 
-export const App = ({ name }) =>
-    <div className='container'>
-      <h1>Pure react client, hello { name || 'dude' }</h1>
-      <img className='logo'
+import { container, logo } from './App.module.scss';
+
+export const App = ({ name = 'World' }) =>
+    <div className={ container }>
+      <Sample name={ name }/>
+      <img className={ logo }
            src='/public/logo.svg'
            alt='React.js'/>
     </div>;

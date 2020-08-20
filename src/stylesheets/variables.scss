@@ -1,7 +1,4 @@
-// colors
-$blue: #61DAFB;
-$blue-dark: #282C34;
+@import '~@stylesheets/colors';
 
-// variables
 $primary-color: $blue;
-$background-color: $blue-dark;
+$background-color: $blue--dark;

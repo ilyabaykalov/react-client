@@ -5,11 +5,14 @@
 ## Used stack
 
 - React.js
-- TypeScript
-- Jest
-- SCSS
+- Redux
+- React Router
+- Axios
+- SCSS Modules
 - Webpack
+- Babel
 - ESLint
+- Jest
 
 ## Install
 ```
