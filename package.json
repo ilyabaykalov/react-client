@@ -36,6 +36,7 @@
 	"lint-staged": {
 		"*.(js|jsx)": [
 			"npm lint:write",
+			"npm test",
 			"git add"
 		]
 	},
