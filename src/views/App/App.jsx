@@ -1,4 +1,5 @@
 import React from 'react';
+import { string } from 'prop-types';
 
 import { Sample } from '@components/Sample';
 
@@ -11,3 +12,7 @@ export const App = ({ name = 'World' }) =>
            src='/public/logo.svg'
            alt='React.js'/>
     </div>;
+
+App.propTypes = {
+  name: string
+};
