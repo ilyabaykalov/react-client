@@ -10,13 +10,14 @@ import history from '@router/history';
 
 import '@stylesheets';
 
-ReactDOM.render(
-    <StrictMode>
-      <Provider store={ store }>
-        <Router history={ history }>
-          <AppRouter/>
-        </Router>
-      </Provider>
-    </StrictMode>,
-    document.getElementById('root')
+const DOM = (
+  <StrictMode>
+    <Provider store={ store }>
+      <Router history={ history }>
+        <AppRouter/>
+      </Router>
+    </Provider>
+  </StrictMode>
 );
+
+ReactDOM.render(DOM, document.getElementById('root'));

@@ -8,7 +8,7 @@ export default axios.create({
   credentials: 'include',
   headers: {
     common: {
-      'Content-Type': 'multipart/form-data'
-    }
-  }
+      'Content-Type': 'multipart/form-data',
+    },
+  },
 });

@@ -7,7 +7,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = process.env.NODE_ENV === 'development';
 
-const filename = (ext) => isDev ? `bundle.${ ext }` : `bundle.[hash].${ ext }`;
+const filename = (ext) =>
+  (isDev ? `bundle.${ ext }` : `bundle.[hash].${ ext }`);
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -15,7 +16,7 @@ module.exports = {
   entry: ['@babel/polyfill', './index.js'],
   output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
@@ -26,14 +27,14 @@ module.exports = {
       '@router': path.resolve(__dirname, './src/router/'),
       '@utils': path.resolve(__dirname, './src/utils/'),
       '@store': path.resolve(__dirname, './src/store/'),
-      '@reducers': path.resolve(__dirname, './src/store/reducers/')
-    }
+      '@reducers': path.resolve(__dirname, './src/store/reducers/'),
+    },
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
     host: '0.0.0.0',
     port: 3000,
-    hot: isDev
+    hot: isDev,
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -41,18 +42,20 @@ module.exports = {
       template: '../public/index.html',
       minify: {
         removeComments: isProd,
-        collapseWhitespace: isProd
-      }
+        collapseWhitespace: isProd,
+      },
     }),
     new CopyPlugin({
-      patterns: [{
-        from: path.resolve(__dirname, 'public/favicon.ico'),
-        to: path.resolve(__dirname, 'dist')
-      }]
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'public/favicon.ico'),
+          to: path.resolve(__dirname, 'dist'),
+        },
+      ],
     }),
     new MiniCssExtractPlugin({
-      filename: filename('css')
-    })
+      filename: filename('css'),
+    }),
   ],
   module: {
     rules: [
@@ -63,39 +66,42 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               hmr: isDev,
-              reloadAll: true
-            }
+              reloadAll: true,
+            },
           },
           {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: '[local]__[hash:base64:5]'
-              }
-            }
+                localIdentName: '[local]__[hash:base64:5]',
+              },
+            },
           },
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         enforce: 'pre',
         test: /\.js$/,
-        loader: 'source-map-loader'
+        loader: 'source-map-loader',
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [{
-          loader: 'eslint-loader'
-        }, {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ['@babel/plugin-proposal-class-properties']
-          }
-        }]
-      }
-    ]
-  }
+        use: [
+          {
+            loader: 'eslint-loader',
+          },
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+              plugins: ['@babel/plugin-proposal-class-properties'],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

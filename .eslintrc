@@ -1,26 +1,27 @@
 {
-	"parser": "babel-eslint",
-	"env": {
-		"es6": true,
-		"browser": true,
-		"node": true
-	},
-	"settings": {
-		"react": {
-			"version": "detect"
-		}
-	},
-	"extends": [ "eslint:recommended", "plugin:react/recommended" ],
-	"rules": {
-		"object-curly-spacing": "off",
-		"comma-dangle": "off",
-		"require-jsdoc": "off",
-		"arrow-parens": "off",
-		"operator-linebreak": "off",
-		"no-extend-native": "off",
-		"no-trailing-spaces": "off",
-		"no-debugger": "off",
-		"max-len": "off"
-	}
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [ "eslint:recommended", "plugin:react/recommended", "google", "jest-enzyme" ],
+  "plugins": [ "babel", "import", "react", "jest" ],
+  "rules": {
+    "object-curly-spacing": "off",
+    "no-trailing-spaces": "off"
+  }
 }
-

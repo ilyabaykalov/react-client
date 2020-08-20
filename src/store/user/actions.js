@@ -1,6 +1,10 @@
-import { LOGIN_USER_FAILURE, LOGIN_USER_STARTED, LOGIN_USER_SUCCESS } from './actionTypes';
-
 import axios from '@utils/axios';
+
+import {
+  LOGIN_USER_FAILURE,
+  LOGIN_USER_STARTED,
+  LOGIN_USER_SUCCESS,
+} from './actionTypes';
 
 export const loginUserRequest = (data) => {
   return (dispatch) => {
@@ -14,7 +18,7 @@ export const loginUserRequest = (data) => {
     }
 
     axios
-        .post(`/auth/token/`, data)
+        .post('/auth/token/', data)
         .then(({ data }) => {
           dispatch(loginUserSuccess(data));
         })
@@ -23,13 +27,13 @@ export const loginUserRequest = (data) => {
 };
 
 const loginUserStarted = () => ({
-  type: LOGIN_USER_STARTED
+  type: LOGIN_USER_STARTED,
 });
 const loginUserSuccess = (user) => ({
   type: LOGIN_USER_SUCCESS,
-  user
+  user,
 });
 const loginUserFailure = (error) => ({
   type: LOGIN_USER_FAILURE,
-  error
+  error,
 });

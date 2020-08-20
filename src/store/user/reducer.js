@@ -1,8 +1,12 @@
-import { LOGIN_USER_FAILURE, LOGIN_USER_STARTED, LOGIN_USER_SUCCESS } from './actionTypes';
+import {
+  LOGIN_USER_FAILURE,
+  LOGIN_USER_STARTED,
+  LOGIN_USER_SUCCESS,
+} from './actionTypes';
 
 const initialState = {
   username: '',
-  token: ''
+  token: '',
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -12,20 +16,20 @@ export const userReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         username: '',
-        token: ''
+        token: '',
       };
     case LOGIN_USER_SUCCESS:
       return {
         ...state,
         loading: false,
         username: action.user.username,
-        token: action.user.token
+        token: action.user.token,
       };
     case LOGIN_USER_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
