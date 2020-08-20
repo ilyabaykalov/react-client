@@ -34,10 +34,9 @@
 		}
 	},
 	"lint-staged": {
-		"*.(js|jsx)": [
-			"npm lint:write",
-			"npm test",
-			"git add"
+		"src/**/*.{js, jsx, json, scss}": [
+			"lint:write",
+			"test"
 		]
 	},
 	"devDependencies": {
@@ -56,7 +55,6 @@
 		"eslint": "^7.2.0",
 		"eslint-config-google": "^0.14.0",
 		"eslint-config-jest-enzyme": "^7.1.2",
-		"eslint-loader": "^4.0.2",
 		"eslint-plugin-babel": "^5.3.1",
 		"eslint-plugin-import": "^2.22.0",
 		"eslint-plugin-jest": "^23.20.0",

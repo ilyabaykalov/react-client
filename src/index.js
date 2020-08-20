@@ -10,7 +10,7 @@ import history from '@router/history';
 
 import '@stylesheets';
 
-const DOM = (
+const root = (
   <StrictMode>
     <Provider store={ store }>
       <Router history={ history }>
@@ -20,4 +20,4 @@ const DOM = (
   </StrictMode>
 );
 
-ReactDOM.render(DOM, document.getElementById('root'));
+ReactDOM.render(root, document.getElementById('root'));
