@@ -5,6 +5,11 @@
 		"browser": true,
 		"node": true
 	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
 	"extends": [ "eslint:recommended", "plugin:react/recommended" ],
 	"rules": {
 		"object-curly-spacing": "off",
@@ -16,11 +21,6 @@
 		"no-trailing-spaces": "off",
 		"no-debugger": "off",
 		"max-len": "off"
-	},
-	"settings": {
-		"react": {
-			"version": "detect"
-		}
 	}
 }
 

@@ -12,16 +12,21 @@ const filename = (ext) => isDev ? `bundle.${ ext }` : `bundle.[hash].${ ext }`;
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: ['@babel/polyfill', './index.tsx'],
+  entry: ['@babel/polyfill', './index.js'],
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist')
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.js', '.jsx', '.scss'],
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@component': path.resolve(__dirname, 'src/components')
+      '@components': path.resolve(__dirname, './src/components/'),
+      '@views': path.resolve(__dirname, './src/views/'),
+      '@stylesheets': path.resolve(__dirname, './src/stylesheets/'),
+      '@router': path.resolve(__dirname, './src/router/'),
+      '@utils': path.resolve(__dirname, './src/utils/'),
+      '@store': path.resolve(__dirname, './src/store/'),
+      '@reducers': path.resolve(__dirname, './src/store/reducers/')
     }
   },
   devtool: isDev ? 'source-map' : false,
@@ -65,33 +70,33 @@ module.exports = {
           'sass-loader'
         ]
       },
-      {
-        test: /\.ts(x?)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'ts-loader'
-          }
-        ]
-      },
+      // {
+      //   test: /\.ts(x?)$/,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     {
+      //       loader: 'ts-loader'
+      //     }
+      //   ]
+      // },
       {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader'
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'eslint-loader'
+        }, {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-proposal-class-properties']
+          }
+        }]
       }
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   use: [{
-      //     loader: 'eslint-loader'
-      //   }, {
-      //     loader: 'babel-loader',
-      //     options: {
-      //       presets: ['@babel/preset-env', '@babel/preset-react'],
-      //       plugins: ['@babel/plugin-proposal-class-properties']
-      //     }
-      //   }]
-      // }
     ]
   }
 };
