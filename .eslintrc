@@ -18,8 +18,8 @@
       "version": "detect"
     }
   },
-  "plugins": [ "babel", "import", "react", "jest" ],
   "extends": [ "eslint:recommended", "plugin:react/recommended", "google", "jest-enzyme" ],
+  "plugins": [ "babel", "import", "react", "jest" ],
   "rules": {
     "object-curly-spacing": "off",
     "no-trailing-spaces": "off",
