@@ -6,6 +6,10 @@
 /.pnp
 .pnp.js
 
+# npm
+/package-lock.json
+npm-debug.log*
+
 # testing
 /coverage
 
@@ -20,5 +24,3 @@
 .env.test.local
 .env.production.local
 debug.log
-
-npm-debug.log*
